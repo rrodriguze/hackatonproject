@@ -4,8 +4,8 @@ package grupof.opendata.unex.es.hackaton_project.model;
 public class FarmaciaModelo {
 
     private int id;
-    private int geo_long;
-    private int geo_lat;
+    private double geo_long;
+    private double geo_lat;
     private String name;
     private String telephone;
     private String address;
@@ -21,7 +21,7 @@ public class FarmaciaModelo {
     public FarmaciaModelo() {
     }
 
-    public FarmaciaModelo(int id, int geo_long, int geo_lat, String name, String telephone,
+    public FarmaciaModelo(int id, double geo_long, double geo_lat, String name, String telephone,
                           String address, String horario_manana_open, String horario_manana_close,
                           String horario_tarde_inv_open, String horario_tarde_inv_close,
                           String horario_tarde_ver_open, String horario_tarde_ver_close,
@@ -48,11 +48,11 @@ public class FarmaciaModelo {
         return id;
     }
 
-    public int getGeo_long() {
+    public double getGeo_long() {
         return geo_long;
     }
 
-    public int getGeo_lat() {
+    public double getGeo_lat() {
         return geo_lat;
     }
 
@@ -106,11 +106,11 @@ public class FarmaciaModelo {
         this.id = id;
     }
 
-    public void setGeo_long(int geo_long) {
+    public void setGeo_long(long geo_long) {
         this.geo_long = geo_long;
     }
 
-    public void setGeo_lat(int geo_lat) {
+    public void setGeo_lat(long geo_lat) {
         this.geo_lat = geo_lat;
     }
 
@@ -156,5 +156,16 @@ public class FarmaciaModelo {
 
     public void setHorario_sabado_close(String horario_sabado_close) {
         this.horario_sabado_close = horario_sabado_close;
+    }
+    public String toString() {
+        return "ID: "+this.id+"\n Far-nombre: " + this.name + ":\n" +
+                "\tLong: " + this.geo_long + "\n" +
+                "\tLat: " + this.geo_lat + "\n" +
+                "\tTelefono: " + this.telephone + "\n" +
+                "\tDireccion: " + this.address + "\n" +
+                "\tHorario mañanas: " + this.horario_manana_open + " - " + this.horario_manana_close + "\n" +
+                "\tHorario tardes invierno: " + this.horario_tarde_inv_open + " - " + this.horario_tarde_inv_close + "\n" +
+                "\tHorario tardes verano: " + this.horario_tarde_ver_open + " - " + this.horario_tarde_ver_close + "\n"+
+                "\tHorario sabados: " + this.horario_sabado_open + " - " + this.horario_sabado_close + "\n";
     }
 }
