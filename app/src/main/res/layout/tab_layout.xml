@@ -13,13 +13,13 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"
             android:layout_height="wrap_content"
+            app:tabTextColor="@color/white"
             android:layout_width="match_parent">
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tab_farmacias"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:tabTextAppearance="@style/AppTabTextAppearance"
                 android:text="@string/farmacias" />
 
             <android.support.design.widget.TabItem
