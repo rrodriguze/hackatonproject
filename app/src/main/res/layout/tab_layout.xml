@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_layout">
 
     <android.support.design.widget.AppBarLayout
@@ -18,12 +19,14 @@
                 android:id="@+id/tab_farmacias"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:tabTextAppearance="@style/AppTabTextAppearance"
                 android:text="@string/farmacias" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tab_restaurantes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:tabTextAppearance="@style/AppTabTextAppearance"
                 android:text="@string/restaurantes" />
 
         </android.support.design.widget.TabLayout>

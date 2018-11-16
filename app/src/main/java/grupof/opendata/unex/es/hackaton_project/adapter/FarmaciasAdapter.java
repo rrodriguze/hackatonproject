@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import grupof.opendata.unex.es.hackaton_project.R;
+import grupof.opendata.unex.es.hackaton_project.activity.DetalleFarmaciaActivity;
 import grupof.opendata.unex.es.hackaton_project.model.FarmaciaModelo;
 
 public class FarmaciasAdapter extends RecyclerView.Adapter<FarmaciasAdapter.FarmaciasHolder> {
@@ -27,7 +28,7 @@ public class FarmaciasAdapter extends RecyclerView.Adapter<FarmaciasAdapter.Farm
 
     @Override
     public FarmaciasHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.fragment_farmacias, parent, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.farmacia_recycler, parent, false);
         return new FarmaciasHolder(mContext, v);
     }
 
@@ -39,6 +40,12 @@ public class FarmaciasAdapter extends RecyclerView.Adapter<FarmaciasAdapter.Farm
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    public void load(List<FarmaciaModelo> fars) {
+        mData.clear();
+        mData = fars;
+        notifyDataSetChanged();
     }
 
     class FarmaciasHolder extends RecyclerView.ViewHolder {
@@ -78,9 +85,9 @@ public class FarmaciasAdapter extends RecyclerView.Adapter<FarmaciasAdapter.Farm
                 public void onClick(View v) {
                     // Abrir la actividad detalle Farmacia
                     // TODO uncoment
-//                    Intent intent = new Intent(mContext, DetalleFarmaciaActivity.class);
-//                    intent.putExtra("farObject", far);
-//                    mContext.startActivity(intent);
+                    Intent intent = new Intent(mContext, DetalleFarmaciaActivity.class);
+                    intent.putExtra("farObject", far);
+                    mContext.startActivity(intent);
                     Log.i("ADAPTER FARMACIA", "ABRIR DETALLE");
                 }
             });
@@ -88,7 +95,5 @@ public class FarmaciasAdapter extends RecyclerView.Adapter<FarmaciasAdapter.Farm
         }
 
     }
-
-    // TODO CARGA ROOM
 
 }

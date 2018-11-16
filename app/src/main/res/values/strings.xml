@@ -8,4 +8,7 @@
     <string name="placeholder_farmacia_title">Nombre Farmacia</string>
     <string name="placeholder_farmacia_direction">Direccion Farmacia</string>
     <string name="placeholder_farmacia_tlfn">Telefono farmacia</string>
+    <string name="farmacia_address_title">Dirección</string>
+    <string name="farmacia_schedule_title">Horario</string>
+    <string name="farmacia_telefono_title">Telefono</string>
 </resources>

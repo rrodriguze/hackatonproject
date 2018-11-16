@@ -1,9 +1,10 @@
-package grupof.opendata.unex.es.hackaton_project;
+package grupof.opendata.unex.es.hackaton_project.activity;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.util.Log;
 
 
 import org.json.JSONArray;
@@ -15,6 +16,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import grupof.opendata.unex.es.hackaton_project.R;
 import grupof.opendata.unex.es.hackaton_project.adapter.TabsAdapter;
 import grupof.opendata.unex.es.hackaton_project.model.FarmaciaModelo;
 
@@ -23,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabsAdapter mPagerAdapter;
     private TabLayout mTabLayout;
-    JSONObject farmaciaObj;
     JSONObject parkingObj;
     /**
      * Lista de farmacias parseadas del JSON
@@ -34,27 +35,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        //setToolbar();
+        setContentView(R.layout.activity_main);
 
         setTabLayout();
 
-        //JSON PARSER
-        initFarmaciaJSON();
-        //initParkingJSON();
     }
 
-    public void initFarmaciaJSON(){
-        String farmaciaJSON = "Farmacia.json";
-        try {
-            farmaciaObj = new JSONObject(readJSONFromAsset(farmaciaJSON));
-            getDataFarmacia(farmaciaObj);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
     public void initParkingJSON(){
         String parkingJSON = "PlazaMovilidadReducida.json";
 

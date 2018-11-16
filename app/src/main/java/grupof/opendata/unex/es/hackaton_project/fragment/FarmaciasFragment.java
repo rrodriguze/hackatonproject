@@ -12,8 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import grupof.opendata.unex.es.hackaton_project.R;
 import grupof.opendata.unex.es.hackaton_project.adapter.FarmaciasAdapter;
+import grupof.opendata.unex.es.hackaton_project.model.FarmaciaModelo;
 
 public class FarmaciasFragment extends Fragment {
 
@@ -37,10 +41,16 @@ public class FarmaciasFragment extends Fragment {
         bindView();
 
         // TODO Descomentar cuando carga por ROOM
-        // loadItems();
+        loadItems();
 
         return v;
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadItems();
     }
 
     private void bindView() {
@@ -50,6 +60,12 @@ public class FarmaciasFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mAdapter);
     }
+
+    private void loadItems() {
+        List<FarmaciaModelo> fars = new FarmaciaModelo().getAll(getActivity().getApplicationContext());
+        mAdapter.load(fars);
+    }
+
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
