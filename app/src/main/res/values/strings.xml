@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="farmacias">Farmacias</string>
+    <string name="restaurantes">Restaurantes</string>
+    <string name="placeholder_farmacia_title">Nombre Farmacia</string>
+    <string name="placeholder_farmacia_direction">Direccion Farmacia</string>
+    <string name="placeholder_farmacia_tlfn">Telefono farmacia</string>
 </resources>

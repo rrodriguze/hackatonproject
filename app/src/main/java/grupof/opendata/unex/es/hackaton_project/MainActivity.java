@@ -1,14 +1,11 @@
 package grupof.opendata.unex.es.hackaton_project;
 
+import android.support.design.widget.AppBarLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,8 +15,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
+import grupof.opendata.unex.es.hackaton_project.adapter.TabsAdapter;
+
 public class MainActivity extends AppCompatActivity {
 
+    private ViewPager viewPager;
+    private TabsAdapter mPagerAdapter;
+    private TabLayout mTabLayout;
     JSONObject obj;
 
 
@@ -28,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //setToolbar();
 
+        setTabLayout();
 
         //JSON PARSER
         initFarmaciaJSON();
@@ -42,6 +46,36 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setTabLayout() {
+
+        // Set layout
+        mTabLayout = findViewById(R.id.tab_layout);
+
+        // Initialize viewerpager
+        viewPager = findViewById(R.id.pager);
+        mPagerAdapter = new TabsAdapter(getSupportFragmentManager(), mTabLayout.getTabCount());
+        viewPager.setAdapter(mPagerAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+
+        // Add the onTabSelectedListener to the TabLayout
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
     }
 
     /**
@@ -65,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     public String readJSONFromAsset() {
         String json = null;
         try {

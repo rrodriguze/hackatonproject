@@ -11,7 +11,7 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
 
     private int numTabs;
 
-    TabsAdapter(FragmentManager fm, int NoofTabs) {
+    public TabsAdapter(FragmentManager fm, int NoofTabs) {
         super(fm);
         this.numTabs = NoofTabs;
     }
@@ -23,7 +23,8 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
                 return new FarmaciasFragment();
 
             case 1:
-                return new RestaurantesFragment();
+                //return new RestaurantesFragment();
+                return new FarmaciasFragment();
 
             default:
                 return null;
