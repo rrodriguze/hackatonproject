@@ -37,15 +37,34 @@ public class MainActivity extends AppCompatActivity {
     public void initFarmaciaJSON(){
         try {
             obj = new JSONObject(readJSONFromAsset());
-            JSONObject results = obj.getJSONObject("results");
-            JSONArray bindings = results.getJSONArray("bindings");
-            System.out.println("Longitud array: "+bindings.length());
+            getDataFarmacia(obj);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Método que se encarga de obtener los datos de la lista de farmacias proporcionada por el JSON
+     * @param main_farmacia
+     */
+    public void getDataFarmacia(JSONObject main_farmacia){
+        try {
+            JSONObject results = main_farmacia.getJSONObject("results");
+            JSONArray farmacias = results.getJSONArray("bindings");
+            String message = "";
+            for (int i = 0; i <farmacias.length() ; i++) {
+                JSONObject rdfs_label = (JSONObject) farmacias.getJSONObject(i).get("rdfs_label");
+                String nombreFarmacia = String.valueOf(rdfs_label.get("value"));
+                message += nombreFarmacia +"\n";
+            }
+            System.out.println(message);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+
+    }
     public String readJSONFromAsset() {
         String json = null;
         try {
